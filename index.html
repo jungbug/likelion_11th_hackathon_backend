@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" name="input" placeholder="아무거나 써주세요">
+  <button>완료버튼</button>
+
+  <script>
+    const input = document.querySelector('input');
+    const button = document.querySelector('button');
+
+    async function getData() {
+      console.log(input.value);
+      const formData = new URLSearchParams();
+      formData.append('input', input.value);
+
+      const res = await fetch('http://localhost:8080/test', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData,
+      });
+
+      const data = await res.json();
+      console.log(data);
+    }
+
+    button.addEventListener('click', () => {
+      getData();
+    });
+  </script>
+</body>
+
+</html>
