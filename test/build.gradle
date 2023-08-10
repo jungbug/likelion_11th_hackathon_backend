@@ -28,6 +28,10 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+springBoot {
+	mainClassName = 'com.example.test.TestApplication'
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
